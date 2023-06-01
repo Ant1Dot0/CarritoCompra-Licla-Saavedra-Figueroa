@@ -1,0 +1,6 @@
+C:\proyectos\Carrito2023\CarritoCompra\Modelo\bin\Debug\Modelo.dll
+C:\proyectos\Carrito2023\CarritoCompra\Modelo\bin\Debug\Modelo.pdb
+C:\proyectos\Carrito2023\CarritoCompra\Modelo\obj\Debug\Modelo.csproj.AssemblyReference.cache
+C:\proyectos\Carrito2023\CarritoCompra\Modelo\obj\Debug\Modelo.csproj.CoreCompileInputs.cache
+C:\proyectos\Carrito2023\CarritoCompra\Modelo\obj\Debug\Modelo.dll
+C:\proyectos\Carrito2023\CarritoCompra\Modelo\obj\Debug\Modelo.pdb
