@@ -7,14 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace Vista
 {
-    public partial class SiteMaster : MasterPage
+    public partial class Ca : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void TxtSearch_TextChanged(object sender, EventArgs e)
         {
 
         }
