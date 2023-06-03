@@ -23,6 +23,8 @@ namespace Vista
             listaA = new ArticuloNegocio().Listar();
             imagenes = new ListadoImagen().Listar();
 
+            Carrito = (List<Articulo>)Session["CCompra"];
+
             if(Carrito == null)
             {
                 Carrito = new List<Articulo>();
@@ -44,13 +46,14 @@ namespace Vista
 
         private void BtnAddClick()
         {
-            if(Request.QueryString["Cont"] != null)  
+            if(Request.QueryString["ID"] != null)  
             {
                 int ID = int.Parse(Request.QueryString["ID"]);
 
                 Carrito.Add(listaA[ID]);
+                Session.Add("CCompra", Carrito);
+                Response.Redirect("Default.aspx");
 
-                
             }
         }
     }
