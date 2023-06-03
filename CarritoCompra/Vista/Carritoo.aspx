@@ -5,7 +5,20 @@
 
     <div style="height:198px">
 
-      <asp:GridView ID="GridViewCarrito" CssClass="table table-striped-columns table-bordered table-dark" runat="server"></asp:GridView>
+      <asp:GridView ID="GridViewCarrito" CssClass="table table-striped-columns table-bordered table-dark" runat="server" AutoGenerateColumns="false" >
+          <Columns>
+
+              <asp:BoundField HeaderText="ID" DataField="ID" />
+              <asp:BoundField HeaderText="Producto" DataField="Nombre" />
+              <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
+              <asp:BoundField HeaderText="Precio" DataField="Precio" />
+              <asp:CommandField ShowSelectButton="true" SelectText="❌" HeaderText="Eliminar Producto" />
+
+          </Columns>
+          
+
+      </asp:GridView>
+       
 
     </div>
             
