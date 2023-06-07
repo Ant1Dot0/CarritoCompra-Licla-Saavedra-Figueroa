@@ -17,11 +17,23 @@ namespace Vista
 
         public Articulo Aux { get; set; }
 
+        public int CantidadCarrito;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             List<Imagen> imagenes = new List<Imagen>();
             listaA = new ArticuloNegocio().Listar();
             imagenes = new ListadoImagen().Listar();
+
+            if (Session["CantidadCarrito"] != null)
+            {
+                CantidadCarrito = (int)Session["CantidadCarrito"];
+            }
+            else
+            {
+                CantidadCarrito = 0;
+            }
+            
 
             Carrito = (List<Articulo>)Session["CCompra"];
 
@@ -30,6 +42,8 @@ namespace Vista
                 Carrito = new List<Articulo>();
 
             }
+
+            
 
             foreach(Articulo x in listaA)
             {
@@ -50,8 +64,10 @@ namespace Vista
             {
                 int ID = int.Parse(Request.QueryString["ID"]);
 
-                Carrito.Add(listaA[ID]);
+                Carrito.Add(listaA[ID-1]);
+                CantidadCarrito++;
                 Session.Add("CCompra", Carrito);
+                Session.Add("CantidadCarrito", CantidadCarrito);
                 Response.Redirect("Default.aspx");
 
             }
