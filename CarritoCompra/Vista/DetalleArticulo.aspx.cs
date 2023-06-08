@@ -20,6 +20,24 @@ namespace Vista
 
 
         {
+
+            if (Session["CantidadCarrito"] != null)
+            {
+                CantidadCarrito = (int)Session["CantidadCarrito"];
+            }
+            else
+            {
+                CantidadCarrito = 0;
+            }
+
+            Carrito = (List<Articulo>)Session["CCompra"];
+
+            if (Carrito == null)
+            {
+                Carrito = new List<Articulo>();
+
+            }
+
             int id_articulo = int.Parse(Request.QueryString["id_articulo"]);
             List<Articulo> lista = (List<Articulo>)Session["ListaA"];
             foreach (Articulo art in lista)
@@ -37,13 +55,14 @@ namespace Vista
                 if (x.IDarticulo == articulo.ID)
                     ListaImagenes.Add(x);
             }
+
         }
 
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
 
             Carrito.Add(articulo);
-            CantidadCarrito++;
+            CantidadCarrito = Carrito.Count;
             Session.Add("CCompra", Carrito);
             Session.Add("CantidadCarrito", CantidadCarrito);
             Response.Redirect("Default.aspx");
@@ -52,7 +71,7 @@ namespace Vista
         protected void btnPagar_Click(object sender, EventArgs e)
         {
             Carrito.Add(articulo);
-            CantidadCarrito++;
+            CantidadCarrito = Carrito.Count;
             Session.Add("CCompra", Carrito);
             Session.Add("CantidadCarrito", CantidadCarrito);
             Response.Redirect("Carritoo.aspx");

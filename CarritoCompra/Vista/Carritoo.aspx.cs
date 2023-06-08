@@ -12,10 +12,11 @@ namespace Vista
     public partial class Ca : System.Web.UI.Page
     {
         public List<Articulo> Carrito = new List<Articulo>();
-        public decimal total = 0;
+        public decimal total;
         public int CantidadCarrito;
         protected void Page_Load(object sender, EventArgs e)
         {
+            int cont = 0;
             if (Session["CantidadCarrito"] != null)
             {
                 CantidadCarrito = (int)Session["CantidadCarrito"];
@@ -28,10 +29,16 @@ namespace Vista
             if (Session["CCompra"] != null)
             {
                 Carrito = (List<Articulo>)Session["CCompra"];
+                foreach (Articulo art in Carrito)
+                {
+                    total += art.Precio;
+                    art.ID = cont;
+                    cont++;
+                }
                 GridViewCarrito.DataSource = Carrito;
                 DataBind();
             }
-            int cont = 0;
+            total = 0;
             foreach (Articulo art in Carrito)
             {
                 total += art.Precio;

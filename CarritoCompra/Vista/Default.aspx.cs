@@ -19,10 +19,11 @@ namespace Vista
 
         public int CantidadCarrito;
 
-        public List<Imagen> imagenes { get; set;}
+        public List<Imagen> imagenes { get; set; }
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            List<Imagen> imagenes = new List<Imagen>();
             listaA = new ArticuloNegocio().Listar();
             imagenes = new ListadoImagen().Listar();
 
@@ -36,9 +37,7 @@ namespace Vista
             {
                 CantidadCarrito = 0;
             }
-
-            Session.Add("Imagenes", imagenes);
-
+            
             Carrito = (List<Articulo>)Session["CCompra"];
 
             if(Carrito == null)
