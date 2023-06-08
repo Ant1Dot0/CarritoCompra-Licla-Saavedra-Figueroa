@@ -19,11 +19,14 @@ namespace Vista
 
         public int CantidadCarrito;
 
+        public List<Imagen> imagenes { get; set;}
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Imagen> imagenes = new List<Imagen>();
             listaA = new ArticuloNegocio().Listar();
             imagenes = new ListadoImagen().Listar();
+
+            Session.Add("ListaA", listaA);
 
             if (Session["CantidadCarrito"] != null)
             {
@@ -33,7 +36,8 @@ namespace Vista
             {
                 CantidadCarrito = 0;
             }
-            
+
+            Session.Add("Imagenes", imagenes);
 
             Carrito = (List<Articulo>)Session["CCompra"];
 
@@ -43,8 +47,6 @@ namespace Vista
 
             }
 
-            
-
             foreach(Articulo x in listaA)
             {
                 foreach(Imagen y in imagenes)
@@ -53,6 +55,7 @@ namespace Vista
                         x.ImagenURL = y.ImagenUrl;
                 }
             }
+           
 
             BtnAddClick();
 

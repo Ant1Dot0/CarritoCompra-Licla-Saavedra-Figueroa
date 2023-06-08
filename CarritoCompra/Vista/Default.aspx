@@ -10,7 +10,8 @@
                 <div class="card-body">
                     <h5 class="card-title"><%=x.Nombre%></h5>
                     <p class="card-text"><%=x.Descripcion%></p>
-                    <a href="Default.aspx?ID= <%= x.ID%>" onclick='BtnAddClick()'  class="btn btn-primary">AGREGAR</a>
+                    <a href="Default.aspx?ID= <%= x.ID%>" onclick='BtnAddClick()'  class="btn btn-success">Agregar</a>
+                    <a href="DetalleArticulo.aspx?id_articulo=<%=x.ID%>" class="btn btn-primary">Ver más</a>
                 </div>
             </div>
             <%  }%>
